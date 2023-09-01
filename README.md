@@ -1,7 +1,7 @@
 # Summary
 In this test we are going to code a small Web Application to help the managers better understand the results of their teammate's happiness survey results, as well as create actions to follow up on these surveys in a simple kanban view
 
-The test should take ~4-8h, we will evaluate your coding skills on multiple aspects, even beyond what is listed below, so please feel free to invest your time in any area you might feel is valuable / would be interesting to discuss in the follow up technical interview.
+The test should take ~4-8h, getting everything done might be a bit challenging, but we will evaluate your coding skills on multiple aspects, even beyond what is listed below, so please feel free to invest your time in any area you might feel is valuable / would be interesting to discuss in the follow up technical interview.
 
 ## Instructions
 We are trying to build an appp to review teammates mindstates, which will be done in two phases:
