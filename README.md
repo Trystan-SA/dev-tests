@@ -47,9 +47,9 @@ The whole application must run under docker, and be startable using docker-compo
 * Writing tests
 
 ## Timing
-Don't forget to share with us the time you have spent on this project!
+Don't forget to share with us the time you spent on this project!
 
 ![alt text][rabbit]
 
 
-[rabbit]: https://github.com/somanyWays/dev-tests/raw/master/images/wonderland.gif
+[rabbit]:  https://github.com/CardioLogs/card-triage/raw/master/images/wonderland.gif
