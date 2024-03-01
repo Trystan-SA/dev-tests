@@ -1,0 +1,15 @@
+FROM node:lts-slim
+
+WORKDIR /home/node
+RUN apt update -y
+RUN apt install -y git
+
+COPY package.json .
+RUN npm i
+
+EXPOSE 3000
+
+ARG ENV=development
+ENV NODE_ENV=$ENV
+
+CMD ["npm", "run", "start:dev"]

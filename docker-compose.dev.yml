@@ -1,0 +1,109 @@
+version: "3.8"
+
+services:
+    nginx:
+        image: nginx:1.25.3-alpine3.18
+        container_name: nginx
+        ports:
+            - "80:80"
+            - "443:443"
+        stop_grace_period: 0.1s
+        volumes:
+            - ./nginx/nginx.dev.conf:/etc/nginx/nginx.conf
+            - nginx:/var/log/nginx
+        networks:
+            - public
+        logging:
+            driver: none
+        deploy:
+            restart_policy:
+                condition: on-failure
+                delay: 5s
+            resources:
+                limits:
+                    cpus: "0.5"
+                    memory: 500M
+                reservations:
+                    cpus: "0.1"
+                    memory: 250M
+            placement:
+                constraints:
+                    - node.role == manage
+
+
+
+    nestjs:
+        build:
+            dockerfile: dockerfile.dev
+            context: NestJS
+        ports:
+            - "3000:3000"
+        stop_grace_period: 0.1s
+        volumes:
+            - ./NestJS:/home/node
+            - /home/node/node_modules
+        depends_on:
+            - postgres
+        networks:
+            - public
+            - private
+
+    
+    angular:
+        build: 
+            dockerfile: dockerfile.dev
+            context: Angular
+        ports:
+            - "4200:4200"
+        stop_grace_period: 0.1s
+        volumes:
+            - ./Angular:/home/node
+            - /home/node/node_modules
+        networks:
+            - public
+
+
+    postgres:
+        image: postgres:16.2-alpine3.19
+        ports:
+            - "5432:5432"
+        environment:
+            - POSTGRES_PASSWORD=pass
+            - POSTGRES_USER=root
+            - POSTGRES_DB=trueonboarding
+        volumes:
+            - postgres:/var/lib/postgresql/data
+        networks:
+            - private
+
+    pgadmin:
+        image: dpage/pgadmin4:latest
+        ports:
+            - "3366:3366"
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=trystansarrade@gmail.com
+            - PGADMIN_DEFAULT_PASSWORD=root
+            - PGADMIN_LISTEN_ADDRESS=0.0.0.0
+            - PGADMIN_LISTEN_PORT=3366
+            # Suppress Pgadmin logs
+            - GUNICORN_ACCESS_LOGFILE=/dev/null
+            - PGADMIN_CONFIG_CONSOLE_LOG_LEVEL=100
+        logging:
+            driver: none
+        volumes:
+            - pgadmin:/var/lib/pgadmin
+        networks:
+            - private
+            - public
+
+
+volumes:
+    server:
+    nginx:
+    client:
+    postgres:
+    pgadmin:
+
+networks:
+    public:
+    private:

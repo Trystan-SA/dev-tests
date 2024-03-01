@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+h1 { @apply text-3xl;}
+h2 { @apply text-2xl;}
+h3 { @apply text-xl;}
+h4 { @apply text-lg;}
+h5 { @apply text-base;}
+h6 { @apply text-sm;}
+
+a { @apply text-blue-500;}
+
+
+form { @apply flex flex-col items-center justify-center gap-2;}
+input { @apply w-full px-2 py-0 border rounded h-10 bg-slate-100;}
+input[type="checkbox"] { @apply ml-2 h-4 my-auto;}
+form label {@apply pb-2;}
+form div.input {@apply w-full basis-6 align-middle flex-col flex flex-col;}
+
+button { @apply px-4 py-1 text-black bg-blue-500 border text-slate-50 rounded; }
+button:disabled {@apply cursor-not-allowed bg-slate-200 text-slate-500;}
