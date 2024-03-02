@@ -1,0 +1,13 @@
+{
+    "explorer.fileNesting.patterns": {
+        "*.module.ts": "$(capture).entity.ts, $(capture).service.ts, $(capture).controller.ts",
+        "*.js": "",
+        "package.json": "esb.dev.mjs, .gitignore, svelte.config.js, postcss.*, package-lock.*, tailwind.*, tsconfig.*, .env"
+    },
+    "material-icon-theme.files.associations": {
+        "*.entity.ts": "Nest-pipe",
+        "*.service.ts": "Nest-service",
+        "*.controller.ts": "Nest-controller",
+        "*.module.ts": "Nest-module"
+    },
+}

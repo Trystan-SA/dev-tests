@@ -1,1 +1,0 @@
-[17h25 - 18h09] - Main Docker Setup (44 minutes)
