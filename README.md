@@ -11,6 +11,10 @@ Kanban result
 ![alt text](./kanban.png)
 
 
+DB_Schema
+![alt text](./db_schema.png)
+
+
 ## Time spent
 
 Friday - 2h34 <br />

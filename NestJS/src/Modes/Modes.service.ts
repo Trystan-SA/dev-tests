@@ -57,8 +57,6 @@ export class ModesService {
             }
         })
 
-        
-
         return DuplicatedScoresStatistics;
     }
 }
