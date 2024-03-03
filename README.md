@@ -3,6 +3,8 @@ Run the project with `make run`
 
 Use the `pgsql_backup` file to restore Postgres data
 
+Angular SPA is served to url `http://localhost` and NestJS api to `http://localhost/api`
+
 
 ![alt text](./dashboard.png)
 
