@@ -1,8 +1,14 @@
-## Things to improve on this project
 
-- Use a migration script to copy CSV data automatically once the tables are set.
-- Docker container are not production ready, they are vulnerables
-- Use Swagger UI to documents NestJS endpoints
+Run the project with `make run`
+
+Use the `pgsql_backup` file to restore Postgres data
+
+
+Dashboard result
+![alt text](./dashboard.png)
+
+Kanban result
+![alt text](./kanban.png)
 
 
 ## Time spent
