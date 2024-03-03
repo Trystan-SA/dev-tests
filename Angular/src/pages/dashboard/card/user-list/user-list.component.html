@@ -1,0 +1,23 @@
+
+<table>   
+    <thead>
+        <tr>
+            <th>Degree</th>
+            <th>Gender</th>
+            <th>Work Situation</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (user of userList; track user.id){
+            <tr>
+                <td>{{user.degree}}</td>
+                <td>{{user.gender}}</td>
+                <td>{{user.workSituation}}</td>
+                <td>{{user.createdAt}}</td>
+                <td> <a [href]="'dashboard/user/' + user.id"> <button>Info</button> </a> </td>
+            </tr>
+        }
+    </tbody>
+</table>

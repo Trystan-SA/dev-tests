@@ -1,0 +1,16 @@
+<div class="kanban-card">
+
+    <span class="title">{{action.title}}</span>
+    <span [className]="'status ' + action.status">{{action.status}}</span>
+
+    <div class="my-3 flex flex-col">
+        <span class="id">Id: {{action.id}}</span>
+        <span class="owner">Owner: {{action.Owner_userId}}</span>
+    </div>
+
+    <div>
+        <button (click)="updateStatus('Pending')">Planned</button>
+        <button (click)="updateStatus('InProgress')">InProgress</button>
+        <button (click)="updateStatus('Done')">Done</button>
+    </div>
+</div>

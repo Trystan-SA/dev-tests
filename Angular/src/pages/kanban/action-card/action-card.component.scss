@@ -1,0 +1,11 @@
+.kanban-card {@apply border mx-3 my-2 flex flex-col relative p-4;}
+.title {@apply text-center text-indigo-500;}
+.status {@apply absolute top-0 mt-1 mr-1 right-0 text-sm rounded-3xl bg-slate-200 w-fit px-2 text-slate-600;}
+.status.InProgress {@apply bg-orange-600 w-fit px-2 text-orange-50;}
+.status.Pending {@apply bg-blue-600 w-fit px-2 text-blue-50;}
+.status.Done {@apply bg-green-600 w-fit px-2 text-green-50;}
+
+.id {@apply text-sm text-slate-500;}
+.owner {@apply text-sm text-slate-500;}
+
+button {@apply h-7 py-0}

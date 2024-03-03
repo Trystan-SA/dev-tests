@@ -1,0 +1,58 @@
+import { MigrationInterface, QueryRunner } from "typeorm";
+
+export class Migrations1709374631940 implements MigrationInterface {
+    name = 'Migrations1709374631940'
+
+    public async up(queryRunner: QueryRunner): Promise<void> {
+
+        // Create new "step" table to normalize "questions" table
+        await queryRunner.query(`CREATE TABLE IF NOT EXISTS "steps" (
+            step_id uuid NOT NULL DEFAULT uuid_generate_v4(),
+            step_title TEXT NOT NULL,
+            step_index INTEGER NOT NULL,
+            PRIMARY KEY ("step_id")
+        )`);
+
+        // Copy values from "questions" table into the new "step" table.
+        await queryRunner.query(`INSERT INTO steps (step_id, step_title, step_index) SELECT DISTINCT step_id, step_title, step_index FROM questions`)
+
+        // Remove duplicated steps data from "questions" table
+        await queryRunner.query(`ALTER TABLE questions DROP COLUMN step_title`)
+        await queryRunner.query(`ALTER TABLE questions DROP COLUMN step_index`)
+
+
+
+
+        // Create new "answer" table to normalize "question_results" table
+        await queryRunner.query(`CREATE TABLE IF NOT EXISTS "answers" (
+            answer_id uuid NOT NULL DEFAULT uuid_generate_v4(),
+            answer INTEGER NOT NULL,
+            answer_label TEXT NOT NULL,
+            created_at TIMESTAMP NOT NULL DEFAULT now(),
+            PRIMARY KEY ("answer_id")
+        )`);
+
+        // Copy values from "question_results" table into the new "anwser" table.
+        await queryRunner.query(`INSERT INTO answers
+            (answer_id, answer, answer_label, created_at)
+            SELECT DISTINCT answer_id, answer, answer_label, created_at FROM question_results
+            ON CONFLICT (answer_id) DO NOTHING
+        `)
+
+        // Remove duplicated answer data from the "question_results" table
+        await queryRunner.query(`ALTER TABLE question_results DROP COLUMN answer`)
+        await queryRunner.query(`ALTER TABLE question_results DROP COLUMN answer_label`)
+
+
+
+        // Fix typo from 'survey_results" table
+        await queryRunner.query(`ALTER TABLE "survey_results" RENAME COLUMN "surver_result_id" TO "survey_result_id"`)
+
+        // Fix inconsistent naming for table "modes"
+        await queryRunner.query(`ALTER TABLE "modes" RENAME COLUMN "workoscope_result_id" TO "mode_id"`)
+    }
+
+    public async down(queryRunner: QueryRunner): Promise<void> {
+    }
+
+}
