@@ -4,10 +4,8 @@ Run the project with `make run`
 Use the `pgsql_backup` file to restore Postgres data
 
 
-Dashboard result
 ![alt text](./dashboard.png)
 
-Kanban result
 ![alt text](./kanban.png)
 
 
